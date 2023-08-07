@@ -1,4 +1,4 @@
-// ES6 Spread syntax for arrays
+/* ES6 Spread syntax for arrays */
 const fruits = ['Apple', 'Banana', 'Orange'];
 const vegetables = ['Cucumber', 'Radish'];
 
