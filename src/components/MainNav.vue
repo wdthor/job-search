@@ -10,6 +10,10 @@
             </li>
           </ul>
         </nav>
+        <div class="ml-auto flex h-full items-center">
+          <ProfileImage v-if="isLoggedIn" />
+          <ActionButton v-else @click="loginUser" />
+        </div>
       </div>
     </div>
   </header>
@@ -17,10 +21,18 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import ActionButton from '@/components/ActionButton.vue';
+import ProfileImage from '@/components/ProfileImage.vue';
 
 const company = ref('ThorWD Careers');
 
 const url = ref('https://careers.google.com');
 
 const menuItems = ['Teams', 'Locations', 'Life at ThorWD', 'How we hire', 'Students', 'Jobs'];
+
+const isLoggedIn = ref(false);
+
+const loginUser = () => {
+  isLoggedIn.value = !isLoggedIn.value;
+};
 </script>
