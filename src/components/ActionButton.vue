@@ -1,11 +1,36 @@
 <template>
-  <button
-    class="rounded border-0 bg-brand-blue-1 px-5 py-3 font-medium text-white hover:shadow-blue"
-  >
-    Sign in
-  </button>
+  <button :class="buttonClass">{{ text }}</button>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { computed } from 'vue';
 
-<style scoped></style>
+interface Props {
+  text: string;
+  type?: 'primary' | 'secondary';
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  type: 'primary',
+});
+
+const buttonClass = computed(() => {
+  return {
+    [props.type]: true,
+  };
+});
+</script>
+
+<style scoped>
+button {
+  @apply rounded px-5 py-3 font-medium;
+}
+
+.primary {
+  @apply border-0 bg-brand-blue-1 text-white hover:shadow-blue;
+}
+
+.secondary {
+  @apply bg-transparent text-brand-blue-1 hover:bg-brand-blue-2 hover:shadow-blue;
+}
+</style>
