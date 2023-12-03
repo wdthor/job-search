@@ -1,5 +1,5 @@
 <template>
-  <header class="w-full text-sm">
+  <header :class="['w-full', 'text-sm', headerHeightClass]">
     <div class="fixed left-0 top-0 h-16 w-full bg-white">
       <div class="mx-auto flex h-full flex-nowrap border-b border-solid border-brand-gray-1 px-8">
         <a :href="url" target="_blank" class="flex h-full items-center text-xl">{{ company }}</a>
@@ -15,14 +15,16 @@
           <ActionButton v-else text="Sign in" @click="loginUser" />
         </div>
       </div>
+      <AppSubnav v-if="isLoggedIn" />
     </div>
   </header>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import ActionButton from '@/components/ActionButton.vue';
 import ProfileImage from '@/components/ProfileImage.vue';
+import AppSubnav from './AppSubnav.vue';
 
 const company = ref('ThorWD Careers');
 
@@ -35,4 +37,11 @@ const isLoggedIn = ref(false);
 const loginUser = () => {
   isLoggedIn.value = !isLoggedIn.value;
 };
+
+const headerHeightClass = computed(() => {
+  return {
+    'h-16': !isLoggedIn.value,
+    'h-32': isLoggedIn.value,
+  };
+});
 </script>

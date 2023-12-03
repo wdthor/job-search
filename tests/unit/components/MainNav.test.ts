@@ -4,8 +4,17 @@ import userEvent from '@testing-library/user-event'; // userEvents are async
 import MainNav from '@/components/MainNav.vue';
 
 describe('MainNav', () => {
+  const renderMainNav = () => {
+    render(MainNav, {
+      global: {
+        stubs: {
+          FontAwesomeIcon: true,
+        },
+      },
+    });
+  };
   it('displays company name', () => {
-    render(MainNav);
+    renderMainNav();
     // Displays the DOM in raw html
     // screen.debug();
     const companyName = screen.getByText('ThorWD Careers');
@@ -13,7 +22,7 @@ describe('MainNav', () => {
   });
 
   it('displays menu items for navigation', () => {
-    render(MainNav);
+    renderMainNav();
     const navigationMenuItems = screen.getAllByRole('listitem');
 
     const navigationMenuTexts = navigationMenuItems.map((item) => item.textContent);
@@ -29,11 +38,11 @@ describe('MainNav', () => {
 
   describe('When the user logs in', () => {
     it('displays user profile picture', async () => {
-      render(MainNav);
-      screen.debug();
+      renderMainNav();
+      // screen.debug();
 
       // screen.getByRole('img'); This method will fail because in the beginning it doesn't exist yet
-      screen.debug();
+      // screen.debug();
       let profileImage = screen.queryByRole('img', {
         name: /user profile image/i, // in case of img, it will look for alt - i = case incensitive
         // VueTL recommends using Regex instead of strings
