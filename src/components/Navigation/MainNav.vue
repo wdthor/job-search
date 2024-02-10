@@ -22,9 +22,9 @@
 
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import ActionButton from '@/components/ActionButton.vue';
-import ProfileImage from '@/components/ProfileImage.vue';
-import AppSubnav from './AppSubnav.vue';
+import ActionButton from '@/components/Shared/ActionButton.vue';
+import ProfileImage from '@/components/Navigation/ProfileImage.vue';
+import AppSubnav from '@/components/Navigation/AppSubnav.vue';
 
 const company = ref('ThorWD Careers');
 

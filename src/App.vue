@@ -6,8 +6,8 @@
 </template>
 
 <script setup lang="ts">
-import AppHero from './components/AppHero.vue';
-import MainNav from './components/MainNav.vue';
+import MainNav from './components/Navigation/MainNav.vue';
+import AppHero from './components/JobSearch/AppHero.vue';
 </script>
 
 <style scoped></style>
