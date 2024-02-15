@@ -1,13 +1,8 @@
 <template>
-  <div>
-    <MainNav />
-    <AppHero />
-  </div>
+  <MainNav />
+  <RouterView />
 </template>
 
 <script setup lang="ts">
-import MainNav from './components/Navigation/MainNav.vue';
-import AppHero from './components/JobSearch/AppHero.vue';
+import MainNav from '@/components/Navigation/MainNav.vue';
 </script>
-
-<style scoped></style>
